@@ -60,6 +60,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates'),
         ],
         'OPTIONS': {
+            'environment': 'attendance.template_env.environment',
         },
     },
     {
@@ -123,6 +124,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+BASE_URL = 'http://loclahost:8000'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

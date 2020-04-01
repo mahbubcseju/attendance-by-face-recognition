@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.utils import translation
 from jinja2 import Environment
 
@@ -18,6 +19,12 @@ def environment(**options):
 
     })
 
+    env.globals['static'] = static_without_cache
     env.globals['BASE_URL'] = settings.BASE_URL
 
     return env
+
+
+def static_without_cache(name):
+    path = staticfiles_storage.url(name)
+    return path
