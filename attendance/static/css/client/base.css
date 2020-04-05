@@ -16,24 +16,26 @@ body {
 .navbar-wrapper .navbar {
     display: block;
     margin: 0 auto;
-    width: 1024px;
+    max-width: 1024px;
     font-size: 20px;
 }
 
 .navbar .left{
     float: left;
     display: inline-block;
-    margin-right: 10px;
-    padding: 1.5em 0;
-    border: 2px;
+    margin: 1.5em 1.5em 1.5em 0;
 }
 
 .navbar .right{
     float: right;
     display: inline-block;
-    margin-left: 10px;
-    padding: 1.5em 0;
-    border: 2px;
+    margin: 1.5em 0 1.5em 1.5em;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.no-line {
+    text-decoration: none;
 }
 
 .content {

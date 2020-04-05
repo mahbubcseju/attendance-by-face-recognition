@@ -12,11 +12,23 @@
   <div class="navbar-wrapper">
     <div class="navbar">
       <li class="left">
-        Logout
+        ATTENDANCE
       </li>
-      <li class="right">
-        Logout
-      </li>
+      {% if request.user.is_authenticated %}
+        <li class="right">
+          <a href="https://github.com/mahbubcseju" class="no-line">Logout</a>
+        </li>
+        <li class="right">
+          {{ request.user.username }}
+        </li>
+      {% else %}
+        <li class="right">
+          <a href="https://github.com/mahbubcseju" class="no-line">Login</a>
+        </li>
+        <li class="right">
+          <a href="https://github.com/mahbubcseju" class="no-line" >Register</a>
+        </li>
+      {% endif %}
     </div>
   </div>
   {% block content %}{% endblock %}
