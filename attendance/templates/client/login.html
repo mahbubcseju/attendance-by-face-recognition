@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ static('css/client/login-signup-styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+         <!-- Navbar template here -->
+        <div class="login-container">
+            <div class="header">
+                <H1>Sign in to Face Attendence</H1>
+            </div>
+            <form action="#" method="post" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-input" placeholder="Enter your username" autofocus required>    
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-button">Submit</button>
+                </div>
+                <hr>
+                <div class="form-footer">
+                    <p><a href="#">Forget your password?</a></p>
+                <p>Didn't have an account? <a href="#">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+        <!-- Footer template here -->
+    </div>
+</body>
+</html>
