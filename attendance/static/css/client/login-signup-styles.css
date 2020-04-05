@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    background-color: lightslategray;
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    text-align: center;
+    color: rgb(241, 223, 223);
+    margin-bottom: 2rem;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    width: 550px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    background: #ffffff;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-input {
+    width: 100%;
+    background: #fafafa;
+    border: 1px solid #eeeeee;
+    padding: 12px;
+}
+
+.form-button {
+    width: 100%;
+    background: rgb(51, 145, 51);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.form-footer {
+    margin: 1rem;
+    text-align: center;
+}
+
+a:hover {
+    color: rgb(177, 56, 56);
+}
+
+.form-button:hover {
+    background: rgb(108, 148, 30);
+}
+
+.form-social-icon {
+    width: 100%;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.form-social-icon button{
+    font-size: 20px;
+    color: white;
+    height: 50px;
+    width: 50px;
+    background: #2e86b9;
+    border-radius: 60%;
+    margin: 0px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.separator {
+    width: 100%;
+    /* float: left; */
+    border-top: 1px solid rgb(105, 92, 92);
+    text-align: center;
+    margin: 50px 0 0;
+}
+
+.separator b {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: #fff;
+    display: inline-block;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    position: relative;
+    top: -20px;
+    z-index: 1;
+}
+
+p {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 0 10px;
+}

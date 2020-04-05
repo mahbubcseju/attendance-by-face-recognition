@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ static('css/client/login-signup-styles.css') }}">>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+         <!-- Navbar template here -->
+        <div class="login-container">
+            <div class="header">
+                <h1>Welcome to Face Attendence</h1>
+                <H1>Sign Up</H1>
+            </div>
+            <form action="#" method="post" class="login-form">
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" id="firstname" class="form-input" placeholder="Enter your first name" required>    
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" id="lastname" class="form-input" placeholder="Enter your lastname name">    
+                </div>                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-input" placeholder="Enter your username" required>    
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" class="form-input" placeholder="Enter your email" required>    
+                </div>                
+                <div class="form-group">
+                    <button type="submit" class="form-button">Register</button>
+                </div>
+                <div class="separator"><b>or</b></div>
+                <p>Sign up with social media account</p>
+                <div class="form-social-icon">
+                    <button type="button"><i class="fa fa-twitter"></i></button>
+                    <button type="button"><i class="fa fa-facebook"></i></button>
+                </div>
+            </form>
+        </div>
+        <!-- Footer template here -->
+    </div>
+</body>
+</html>
