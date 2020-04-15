@@ -39,6 +39,18 @@ body {
 }
 
 .content {
+    -webkit-box-shadow: 0 0 5px 2px #F0F8FF;
+    -moz-box-shadow: 0 0 5px 2px #F0F8FF;
+    box-shadow: 0 0 5px 2px  #fff;
+    background: #F0F8FF;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
     top: 100px;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+    min-height: 82vh;
+    width: 100%;
     position: relative;
 }
