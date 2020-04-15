@@ -16,17 +16,17 @@
       </li>
       {% if request.user.is_authenticated %}
         <li class="right">
-          <a href="https://github.com/mahbubcseju" class="no-line">Logout</a>
+          <a href="{{ url('LogOut') }}" class="no-line">Logout</a>
         </li>
         <li class="right">
           {{ request.user.username }}
         </li>
       {% else %}
         <li class="right">
-          <a href="https://github.com/mahbubcseju" class="no-line">Login</a>
+          <a href="{{ url('Login') }}" class="no-line">Login</a>
         </li>
         <li class="right">
-          <a href="https://github.com/mahbubcseju" class="no-line" >Register</a>
+          <a href="{{ url('SignUp') }}" class="no-line" >Register</a>
         </li>
       {% endif %}
     </div>

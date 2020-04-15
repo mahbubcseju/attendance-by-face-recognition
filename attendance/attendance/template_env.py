@@ -1,3 +1,4 @@
+from django import urls
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.utils import translation
@@ -19,6 +20,7 @@ def environment(**options):
 
     })
 
+    env.globals['url'] = urls.reverse
     env.globals['static'] = static_without_cache
     env.globals['BASE_URL'] = settings.BASE_URL
 
