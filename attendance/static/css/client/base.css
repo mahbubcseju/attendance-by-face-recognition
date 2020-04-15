@@ -1,4 +1,48 @@
-body {
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100;
+}
+
+.navbar-wrapper {
+    margin: 3px;
+}
+
+.navbar {
+    display: flex;
+    padding: 8px;
+    background: black;
+    color: #fff;
+}
+
+span {
+    color: black;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+    align-self: center;
+    font-size: 18px;
+}
+ 
+.left {
+    margin-right: auto;
+}
+
+/* body {
    max-width: 1024px;
    margin: 0 auto;
 }
@@ -41,4 +85,4 @@ body {
 .content {
     top: 100px;
     position: relative;
-}
+} */

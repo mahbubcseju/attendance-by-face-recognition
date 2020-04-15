@@ -6,12 +6,46 @@
 
 html, body {
     height: 100%;
+    width: 100%;
+}
+
+.navbar-wrapper {
+    margin: 3px;
+}
+
+.navbar {
+    display: flex;
+    padding: 8px;
+    background: black;
+    color: #fff;
+}
+
+span {
+    color: black;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+    align-self: center;
+    font-size: 18px;
+}
+ 
+.left {
+    margin-right: auto;
 }
 
 .container {
     background-color: lightslategray;
-    width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .header {
@@ -89,7 +123,6 @@ a:hover {
 
 .separator {
     width: 100%;
-    /* float: left; */
     border-top: 1px solid rgb(105, 92, 92);
     text-align: center;
     margin: 50px 0 0;
@@ -115,3 +148,4 @@ p {
     font-size: 16px;
     margin: 0 0 10px;
 }
+
