@@ -1,0 +1,25 @@
+form {
+
+    border : 3px solid #F0F8FF;
+
+}
+.content{
+    -webkit-box-shadow: 0 0 5px 2px #F0F8FF;
+    -moz-box-shadow: 0 0 5px 2px #F0F8FF;
+    box-shadow: 0 0 5px 2px  #fff;
+    background: #e5e7e9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    top: 100px;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+    min-height: 20vh;
+    width: 100%;
+    position: relative;
+}
+.button
+{ width: auto;
+  padding: 10px 18px;
+  background-color: #003366;}
