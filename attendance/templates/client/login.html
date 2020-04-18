@@ -1,8 +1,12 @@
 {% include('client/base.html') %}
-<link rel="stylesheet" href="{{ static('css/client/registration.css') }}">
+
+{% block css %}
+  <link rel="stylesheet" href="{{ static('css/client/login.css') }}">
+{% endblock %}
 
 {% block content %}
-  <div class="content">
+  <div class="content content2">
+
     <form method="post" action="{{ url('Login') }}">
       {% for field in form %}
         <p>
@@ -15,7 +19,9 @@
             <p style="color: red">{{ error }}</p>
           {% endfor %}
         </p>
+
       {% endfor %}
+
       <button type="submit">Sign up</button>
       <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
       </form>

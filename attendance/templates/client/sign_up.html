@@ -13,10 +13,10 @@
           {% endif %}
           {% for error in field.errors %}
             <p style="color: red">{{ error }}</p>
-          {% endfor %}
-        </p>
       {% endfor %}
+
       <button type="submit">Sign up</button>
+
       <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
       </form>
   </div>
