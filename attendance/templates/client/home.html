@@ -1,12 +1,19 @@
-{% include('client/base.html') %}
+{% extends('client/base.html') %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ static('css/client/home.css') }}">
+{% endblock %}
 
 {% block content %}
   <div class="content">
-    <div style="top: 100px;">
-      <p><b>Your courses as a teacher or supervisor:</b></p>
-    </div>
-    <div style="top: 200px;">
-      <p><b>Your courses as a student:</b></p>
+    <div class="card">
+      <div style="top: 100px; text-align: center;">
+        <p><b>Your courses as a teacher or supervisor:</b></p>
+      </div>
+      <div style="top: 200px;">
+        <p><b>Your courses as a student:</b></p>
+      </div>
     </div>
   </div>
 {% endblock %}

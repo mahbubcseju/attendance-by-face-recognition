@@ -1,6 +1,11 @@
-body {
-   max-width: 1024px;
-   margin: 0 auto;
+body
+{
+    font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 1024px;
+    color: #333;
 }
 
 .navbar-wrapper {
@@ -42,7 +47,6 @@ body {
     -webkit-box-shadow: 0 0 5px 2px #F0F8FF;
     -moz-box-shadow: 0 0 5px 2px #F0F8FF;
     box-shadow: 0 0 5px 2px  #fff;
-    background: #F0F8FF;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
