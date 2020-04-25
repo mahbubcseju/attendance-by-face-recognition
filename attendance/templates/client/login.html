@@ -7,7 +7,8 @@
 
 {% block content %}
   <div class="content">
-    <form method="post" action="{{ url('Login') }}">
+    <div class="card">
+      <form method="post" action="{{ url('Login') }}">
       {% for field in form %}
         <p>
           {{ field.errors }}
@@ -19,5 +20,6 @@
       <button type="submit">Sign up</button>
       <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
       </form>
+    </div>
   </div>
 {% endblock %}

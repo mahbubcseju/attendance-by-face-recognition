@@ -1,3 +1,27 @@
 .card {
     max-width: 300px;
+    margin: 10% auto;
+    text-align: center;
+    padding: 2em;
+    border-radius: 1em;
+    background-color: #c2c2d6;
+}
+
+label {
+    font-size: 1.5em;
+    display: inline-block;
+}
+
+input {
+    font-size: 1em;
+    padding: 0;
+    border-radius: 25px;
+    text-align:center
+    display: inline-block;
+}
+
+button {
+    border-radius: 25px;
+    font-size: 1em;
+    background-color: green;
 }

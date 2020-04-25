@@ -42,7 +42,7 @@ class SignUpForm(UserCreationForm):
         widget=forms.PasswordInput(),
     )
     password2 = forms.CharField(
-        label='Password Confirmation',
+        label='Confirm Password',
         widget=forms.PasswordInput(),
     )
 

@@ -10,11 +10,10 @@
     <div class="card">
       <form method="post" action="{{ url('SignUp') }}">
         {% for field in form %}
-          <p>
+          <p style="text-align: center; display: flex; align-items: center;">
             {{ field.errors }}
             {{ field.label_tag() }}
             {{ field }}
-            <span class="helptext">{{ field.help_text|safe }}</span>
           </p>
         {% endfor %}
         <button type="submit">Sign up</button>
