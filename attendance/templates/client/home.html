@@ -8,12 +8,47 @@
 {% block content %}
   <div class="content">
     <div class="card">
-      <div style="top: 100px; text-align: center;">
-        <p><b>Your courses as a teacher or supervisor:</b></p>
-      </div>
-      <div style="top: 200px;">
-        <p><b>Your courses as a student:</b></p>
+      <p>My Courses as a Teacher: </p>
+      <div class="courses">
+        <div class="add-course">
+          <button class="call-dialog">
+            Add a new course</button>
+        </div>
       </div>
     </div>
   </div>
 {% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+
+  <script>
+    $(document).ready(function(){
+      $('button.call-dialog').on('click', function() {
+        alertify.prompt("Add a new course", "", "English",
+          function(evt, value ){
+            $.ajax({
+              url: '{{ url('APICourseCreate') }}',
+              type: 'POST',
+              data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                name: value
+              }
+            }).then(
+              function(data) {
+                alertify.success('Course saved successfully');
+              }, function(err) {
+                alertify.error('Creation failed!');
+              }
+            );
+          },
+          function(){
+            alertify.error('Cancel');
+          }
+        );
+      });
+    });
+  </script>
+
+{% endblock %}
+

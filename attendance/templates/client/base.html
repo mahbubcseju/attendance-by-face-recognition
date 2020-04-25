@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Face Attendance</title>
   <link rel="stylesheet" href="{{ static('css/client/base.css') }}">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
   {% block css %}{% endblock %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   {% block scripts %}{% endblock %}
 </head>
 <body>
@@ -31,6 +36,9 @@
       {% endif %}
     </div>
   </div>
+
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
   {% block content %}{% endblock %}
 </body>
 </html>
