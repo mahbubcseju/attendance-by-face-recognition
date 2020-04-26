@@ -2,6 +2,7 @@ import json
 
 from django.views.generic import TemplateView, View
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 
@@ -24,7 +25,7 @@ class APICourseCreate(View):
     def post(self, request, *args, **kwargs):
         course_name = request.POST.get('name')
         try:
-            course = Course.objects.create(name=course_name)
+            course = Course.objects.create(name=course_name, user=request.user)
             obj = {
                 'status': 'OK',
                 'result': 'Saved Successfully',
