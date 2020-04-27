@@ -20,13 +20,28 @@
       </div>
       <div class="course">
         <div style="text-align: left; margin-left: 10px;">Student Info</div>
-        {% for student in object.get_students_info() %}
-          {{ student.user.username }}
-        {% endfor %}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for student in object.get_students_info() %}
+            <tr>
+              <td>{{ student.user.first_name }}</td>
+              <td>{{ student.user.username }}</td>
+              <td>{{ student.user.username }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
-
 {% endblock %}
 
 {% block scripts %}
@@ -81,8 +96,6 @@
       source: users
     });
   });
-
-
 
   </script>
 {% endblock %}
