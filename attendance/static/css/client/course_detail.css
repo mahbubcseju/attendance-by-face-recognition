@@ -26,3 +26,15 @@ table {
   width: 90%;
   margin: 0 auto;
 }
+
+thead tr{
+  background: #b3d9ff;
+}
+
+tbody tr:nth-child(even) {
+  background: #CCC;
+}
+
+tbody tr:nth-child(odd) {
+  background: #e6f2ff;
+}
