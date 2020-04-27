@@ -1,0 +1,23 @@
+.card {
+    margin: 10%;
+}
+
+.course {
+    text-align: center;
+    border: 1px solid grey;
+}
+
+.add-student {
+    text-align: left;
+    margin: 5%;
+}
+
+#user-input {
+    margin-left: 1em;
+    font-size: 1.2em;
+    border-radius: 20px;
+}
+
+.ui-autocomplete{
+  z-index: 1065;
+}

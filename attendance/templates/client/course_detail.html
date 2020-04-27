@@ -1,0 +1,79 @@
+{% extends('client/base.html') %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ static('css/client/course_detail.css') }}">
+  <link rel = "stylesheet" href = "//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <div class="card">
+      <p style="font-size: 1.2em; text-align: center;">Course Name: {{ object.name }} </p>
+      <div class="add-student">
+        Add New Student
+        <input type="text" id="user-input" name="user-input">
+        <button id="call-dialog" class="fa fa-plus" style="margin-left: 1em; background-color: green; border-radius: 20px;">
+        </button>
+        <br><br>
+      </div>
+      <div class="course">
+        <div style="text-align: left; margin-left: 10px;">Student Info</div>
+        {% for student in object.get_students_info() %}
+          {{ student.user.username }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+  <script>
+
+  $(document).ready(function(){
+     var users = [];
+    {% for user in users %}
+      users.push('{{ user.username }}');
+    {% endfor %}
+
+    $('#call-dialog').on('click', function() {
+      alertify.prompt("Do you want to add the following username?", "", $('#user-input').val(),
+        function(evt, value ){
+          $.ajax({
+            url: '{{ url('APICourseCreate') }}',
+            type: 'POST',
+            data: {
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+              name: value
+            }
+          }).then(
+            function(data) {
+              alertify.success('Course saved successfully');
+              location.href = data.result;
+            }, function(err) {
+              alertify.error('Creation failed!');
+            }
+          );
+        },
+        function(){
+          alertify.error('Cancel');
+        }
+      );
+    });
+  });
+
+  $(function() {
+    var users = [];
+    {% for user in users %}
+      users.push('{{ user.username }}');
+    {% endfor %}
+    $('#user-input').autocomplete({
+      source: users
+    });
+  });
+  </script>
+{% endblock %}

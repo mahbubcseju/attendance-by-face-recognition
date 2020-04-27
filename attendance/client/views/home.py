@@ -2,7 +2,7 @@ import json
 
 from django.views.generic import TemplateView, View
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 
@@ -26,9 +26,10 @@ class APICourseCreate(View):
         course_name = request.POST.get('name')
         try:
             course = Course.objects.create(name=course_name, user=request.user)
+            self.request.session['course-added'] = True
             obj = {
                 'status': 'OK',
-                'result': 'Saved Successfully',
+                'result': reverse('Home')
             }
         except Exception:
             obj = {

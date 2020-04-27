@@ -14,11 +14,9 @@
           <button class="call-dialog">
             Add a new course</button>
         </div>
-
         {% for course in courses %}
-          <div class="course">{{ course.name }}</div>
+          <button  class="course" onclick="location.href = '{{ url('CourseDetail', kwargs={'pk': course.id}) }}';">{{ course.name }}</button>
         {% endfor %}
-
       </div>
     </div>
   </div>
@@ -42,6 +40,7 @@
             }).then(
               function(data) {
                 alertify.success('Course saved successfully');
+                location.href = data.result;
               }, function(err) {
                 alertify.error('Creation failed!');
               }
@@ -53,6 +52,13 @@
         );
       });
     });
+
+  $(document).ready(function() {
+    {% if request.session.pop('course-added', False) %}
+      alertify.success('Course added successfully');
+    {% endif %}
+   });
+
   </script>
 
 {% endblock %}
