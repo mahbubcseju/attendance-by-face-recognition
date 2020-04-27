@@ -22,3 +22,7 @@
   z-index: 1065;
 }
 
+table {
+  width: 90%;
+  margin: 0 auto;
+}
