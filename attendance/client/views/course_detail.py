@@ -10,6 +10,7 @@ from django.http import HttpResponse
 from database.models import Course, CourseStudent
 
 
+@method_decorator(login_required, name='dispatch')
 class CourseDetail(DetailView):
     model = Course
     slug_id=id

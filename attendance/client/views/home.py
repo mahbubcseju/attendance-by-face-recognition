@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 
-from database.models import Course
+from database.models import Course, CourseStudent
 
 
 @method_decorator(login_required, name='dispatch')
@@ -15,7 +15,8 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['courses'] = Course.objects.filter(user=self.request.user)
+        context['supervised_courses'] = Course.objects.filter(supervisor=self.request.user)
+        context['student_courses'] = CourseStudent.objects.filter(user=self.request.user)
         return context
 
 

@@ -14,8 +14,26 @@
           <button class="call-dialog">
             Add a new course</button>
         </div>
-        {% for course in courses %}
+        {% for course in supervised_courses %}
           <button  class="course" onclick="location.href = '{{ url('CourseDetail', kwargs={'pk': course.id}) }}';">{{ course.name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="card">
+      <p>My Courses as a Student: </p>
+      <div class="courses">
+        <p class="status">Joined Courses</p>
+        {% for entry in student_courses %}
+          {% if entry.status == 1 %}
+            <button  class="course">{{ entry.course.name }}</button>
+          {% endif %}
+        {% endfor %}
+        <div style="margin-bottom: 1px solid grey;"></div>
+        <p class="status">Pending Invitations:</p>
+        {% for entry in student_courses %}
+          {% if not entry.status %}
+            <button  class="course">{{ entry.course.name }}</button>
+          {% endif %}
         {% endfor %}
       </div>
     </div>

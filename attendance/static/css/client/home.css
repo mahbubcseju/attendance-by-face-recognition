@@ -24,3 +24,9 @@
     padding: 0.2em 0.5em;
     font-size: 1.2em;
 }
+
+.status {
+  text-align: left;
+  margin-left: 2%;
+  background: #e6f2ff;
+}

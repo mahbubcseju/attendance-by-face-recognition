@@ -10,15 +10,14 @@
 {% block content %}
   <div class="content">
     <div class="card">
-      <p style="font-size: 1.2em; text-align: center;">Course Name: {{ object.name }} </p>
+      <div class="course-name">Course Name: {{ object.name }} </div>
       <div class="add-student">
         Add New Student
         <input type="text" id="user-input" name="user-input">
         <button id="call-dialog" class="fa fa-plus" style="margin-left: 1em; background-color: green; border-radius: 20px;">
         </button>
-        <br><br>
       </div>
-      <div style="text-align: left; margin-left: 5%;">Student Info</div>
+      <div style="text-align: left; margin-bottom: .5em;">Student Info</div>
       <div class="course">
         <table>
           <thead>
