@@ -5,4 +5,4 @@ from .auth import (
     Login,
     LogOut,
 )
-from .course_detail import CourseDetail
+from .course_detail import CourseDetail, APIStudentInvite

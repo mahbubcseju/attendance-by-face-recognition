@@ -14,4 +14,4 @@ class Course(models.Model):
 class CourseStudent(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    enabled = models.BooleanField(default=False)
+    enabled = models.IntegerField(default=0)

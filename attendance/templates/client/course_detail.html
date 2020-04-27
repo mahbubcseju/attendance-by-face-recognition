@@ -44,18 +44,19 @@
       alertify.prompt("Do you want to add the following username?", "", $('#user-input').val(),
         function(evt, value ){
           $.ajax({
-            url: '{{ url('APICourseCreate') }}',
+            url: '{{ url('APIStudentInvite') }}',
             type: 'POST',
             data: {
               csrfmiddlewaretoken: '{{ csrf_token }}',
-              name: value
+              name: $('#user-input').val(),
+              course_id: {{ object.id }}
             }
           }).then(
             function(data) {
               alertify.success('Course saved successfully');
               location.href = data.result;
             }, function(err) {
-              alertify.error('Creation failed!');
+              alertify.error(err.responseJSON.result);
             }
           );
         },
@@ -64,6 +65,11 @@
         }
       );
     });
+
+    {% if request.session.pop('student-added', False) %}
+      alertify.success('Student added succfully.');
+    {% endif %}
+
   });
 
   $(function() {
@@ -75,5 +81,8 @@
       source: users
     });
   });
+
+
+
   </script>
 {% endblock %}
