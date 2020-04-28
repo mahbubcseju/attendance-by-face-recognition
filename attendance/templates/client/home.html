@@ -32,7 +32,10 @@
         <p class="status">Pending Invitations:</p>
         {% for entry in student_courses %}
           {% if not entry.status %}
-            <button  class="course">{{ entry.course.name }}</button>
+            <button  class="pending-course"
+                     data-id="{{ entry.id }}" data-name="{{ entry.course.name }}">
+              {{ entry.course.name }}
+            </button>
           {% endif %}
         {% endfor %}
       </div>
@@ -69,11 +72,47 @@
           }
         );
       });
+
+      $('button.pending-course').on('click', function() {
+        var id = $(this).attr('data-id');
+        var name = $(this).attr('data-name');
+        alertify.confirm(
+          'Wanna join in the following class? ',
+          `Course Name: ${name}`,
+          function(){
+            update(id, 1);
+          },
+          function(){
+            update(id, 2);
+          }
+        ).set('labels', {ok:'Join', cancel:'Reject'});
+      });
+
+      function update(id, status) {
+        $.ajax({
+          url: '{{ url('APIStudentInvitationUpdate') }}',
+          type: 'POST',
+          data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            id: id
+            , status: status
+          }
+        }).then(
+          function(data) {
+            location.href = data.result;
+          }, function(err) {
+            alertify.error('Update failed!');
+          }
+        );
+      }
     });
 
   $(document).ready(function() {
     {% if request.session.pop('course-added', False) %}
       alertify.success('Course added successfully');
+    {% endif %}
+    {% if request.session.pop('invitation-updated', False) %}
+      alertify.success('Invitation updated successfully.');
     {% endif %}
    });
 

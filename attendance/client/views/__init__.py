@@ -1,4 +1,8 @@
-from .home import Home, APICourseCreate
+from .home import (
+    Home,
+    APICourseCreate,
+    APIInvitationUpdate,
+)
 from .auth import (
     SignUp,
     SignUpDone,

@@ -45,3 +45,33 @@ class APICourseCreate(View):
         if obj['status'] == 'NG':
             res.status_code = 500
         return res
+
+
+@method_decorator(login_required, name='dispatch')
+class APIInvitationUpdate(View):
+
+    def post(self, request, *args, **kwargs):
+        id = request.POST.get('id')
+        status = request.POST.get('status')
+        try:
+            entry = CourseStudent.objects.get(id=id)
+            entry.status = status
+            entry.save()
+            self.request.session['invitation-updated'] = True
+            obj = {
+                'status': 'OK',
+                'result': reverse('Home')
+            }
+        except Exception:
+            obj = {
+                'status': 'NG',
+                'result': 'Saved failed',
+            }
+
+        res = HttpResponse(
+            json.dumps(obj, ensure_ascii=False, indent=2),
+            content_type='application/json',
+        )
+        if obj['status'] == 'NG':
+            res.status_code = 500
+        return res

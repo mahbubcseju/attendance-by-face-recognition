@@ -16,7 +16,7 @@
     border-radius: 20px;
 }
 
-.course {
+.course, .pending-course {
     border-radius: 20px;
     display: inline-block;
     background-color: grey;
@@ -30,3 +30,4 @@
   margin-left: 2%;
   background: #e6f2ff;
 }
+

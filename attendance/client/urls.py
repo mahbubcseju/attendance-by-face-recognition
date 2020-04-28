@@ -9,7 +9,8 @@ urlpatterns = [
     path('sign_up', views.SignUp.as_view(), name='SignUp'),
     path('sign_up/done', views.SignUpDone.as_view(), name='SignUpDone'),
 
-    path('course/create', views.APICourseCreate.as_view(), name='APICourseCreate'),
+    path('api/course/create', views.APICourseCreate.as_view(), name='APICourseCreate'),
     path('course/detail/<int:pk>/', views.CourseDetail.as_view(), name='CourseDetail'),
     path('course/student/invite/', views.APIStudentInvite.as_view(), name='APIStudentInvite'),
+    path('api/student/invitation/update/', views.APIInvitationUpdate.as_view(), name='APIStudentInvitationUpdate'),
 ]
