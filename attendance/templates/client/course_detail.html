@@ -10,14 +10,17 @@
 {% block content %}
   <div class="content">
     <div class="card">
-      <div class="course-name">Course Name: {{ object.name }} </div>
+      <div class="course-name"><b>Course Name: {{ object.name }}</b></div>
+      <div class="start-attendance">
+        <a href="{{ url('InitializeAttendance', kwargs={'course_id': object.id}) }}">Start an attendance?</a>
+      </div>
       <div class="add-student">
         Add New Student
         <input type="text" id="user-input" name="user-input">
         <button id="call-dialog" class="fa fa-plus" style="margin-left: 1em; background-color: green; border-radius: 20px;">
         </button>
       </div>
-      <div style="text-align: left; margin-bottom: .5em;">Student Info</div>
+      <div style="text-align: left; margin-bottom: .5em; font-size: 1.2em;"><b>Invited but not Joined Student Info.</b></div>
       <div class="course">
         <table>
           <thead>
@@ -25,13 +28,12 @@
               <th>Name</th>
               <th>Username</th>
               <th>Status</th>
-              <th>Percentage</th>
             </tr>
           </thead>
           <tbody>
           {% for student in object.get_students_info() %}
             <tr>
-              <td>{{ student.user.first_name }}</td>
+              <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
               <td>{{ student.user.username }}</td>
               <td>
                 {% if not student.status %}
@@ -42,7 +44,6 @@
                   Rejected
                 {% endif %}
               </td>
-              <td>{{ student.user.username }}</td>
             </tr>
           {% endfor %}
           </tbody>
@@ -65,7 +66,7 @@
     {% endfor %}
 
     $('#call-dialog').on('click', function() {
-      alertify.prompt("Do you want to add the following username?", "", $('#user-input').val(),
+      alertify.prompt("Enter an username to add:", "", $('#user-input').val(),
         function(evt, value ){
           $.ajax({
             url: '{{ url('APIStudentInvite') }}',

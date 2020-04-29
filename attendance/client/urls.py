@@ -13,4 +13,5 @@ urlpatterns = [
     path('course/detail/<int:pk>/', views.CourseDetail.as_view(), name='CourseDetail'),
     path('course/student/invite/', views.APIStudentInvite.as_view(), name='APIStudentInvite'),
     path('api/student/invitation/update/', views.APIInvitationUpdate.as_view(), name='APIStudentInvitationUpdate'),
+    path('attendance/initialize/<int:course_id>/', views.InitializeAttendance.as_view(), name='InitializeAttendance'),
 ]

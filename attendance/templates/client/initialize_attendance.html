@@ -1,0 +1,25 @@
+{% extends('client/base.html') %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ static('css/client/initialize_attendance.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <div class="card">
+      <form method="post" action="">
+      {% for field in form %}
+        <p>
+          {{ field.errors }}
+          {{ field.label_tag() }}
+          {{ field }}
+          <span class="helptext">{{ field.help_text|safe }}</span>
+        </p>
+      {% endfor %}
+      <button type="submit">Start</button>
+      <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+      </form>
+    </div>
+  </div>
+{% endblock %}
