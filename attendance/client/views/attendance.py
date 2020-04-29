@@ -1,6 +1,8 @@
 from django.views.generic import FormView
 from django.urls import reverse_lazy
+
 from client.forms import InitializeAttendanceForm
+from database.models import Course
 
 
 class InitializeAttendance(FormView):
@@ -12,8 +14,12 @@ class InitializeAttendance(FormView):
         self.course_id = course_id
 
         if form.is_valid():
-
+            course = Course.objects.get(id=course_id)
+            obj = form.save(commit=False)
+            obj.course = course
+            obj.save()
             return self.form_valid(form)
+
         return self.form_invalid(form)
 
     def get_success_url(self):
