@@ -20,6 +20,28 @@
         <button id="call-dialog" class="fa fa-plus" style="margin-left: 1em; background-color: green; border-radius: 20px;">
         </button>
       </div>
+
+      <div style="text-align: left; margin-bottom: .5em; font-size: 1.2em;"><b>Attendance:</b></div>
+      <div class="course">
+        <table>
+          <thead>
+            <tr>
+              <th>Name/Date</th>
+              {% for period in object.get_recent_periods() %}
+                <th>{{ period.date }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for student in object.get_joined_students_info() %}
+              <tr>
+                <td>{{ student.user.username }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
       <div style="text-align: left; margin-bottom: .5em; font-size: 1.2em;"><b>Invited but not Joined Student Info.</b></div>
       <div class="course">
         <table>
@@ -31,20 +53,22 @@
             </tr>
           </thead>
           <tbody>
-          {% for student in object.get_students_info() %}
-            <tr>
-              <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
-              <td>{{ student.user.username }}</td>
-              <td>
-                {% if not student.status %}
-                  Pending
-                {% elif student.status == 1 %}
-                  Joined
-                {% else %}
-                  Rejected
-                {% endif %}
-              </td>
-            </tr>
+          {% for student in object.get_all_students_info() %}
+            {% if student.status != 1 %}
+              <tr>
+                <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
+                <td>{{ student.user.username }}</td>
+                <td>
+                  {% if not student.status %}
+                    Pending
+                  {% elif student.status == 1 %}
+                    Joined
+                  {% else %}
+                    Rejected
+                  {% endif %}
+                </td>
+              </tr>
+            {% endif %}
           {% endfor %}
           </tbody>
         </table>
