@@ -15,6 +15,9 @@ class AttendancePeriod(models.Model):
         minutes = seconds // 60
         return minutes
 
+    def get_final_time(self):
+        return self.start_at + timezone.timedelta(minutes=self.period)
+
 
 class AttendanceEntry(models.Model):
     period = models.ForeignKey(AttendancePeriod, on_delete=models.CASCADE)

@@ -9,7 +9,27 @@
   <div class="content">
     <div class="card">
       <p styel="color: green;">Course Name: {{ period.course.name }}</p>
-      <p styel="color: green;">Remaining time: {{ period.get_remaining_time() }} minutes</p>
+      <div styel="color: green;" id="remainingTime">Remaining time: {{ period.get_remaining_time() }} minutes</div>
     </div>
   </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    var deadline = new Date('{{ period.get_final_time() }}').getTime();
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var t = deadline - now;
+      var days = Math.floor(t / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+      var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((t % (1000 * 60)) / 1000);
+      document.getElementById("remainingTime").innerHTML = 'Remaining time: ' + days + ':' + hours + ':' + minutes + ':' + seconds;
+      if (t < 0) {
+        clearInterval(x);
+        document.getElementById("remainingTime").innerHTML = "Time expired for attendance";
+      }
+    }, 1000);
+  </script>
 {% endblock %}
