@@ -23,6 +23,7 @@ class InitializeAttendance(FormView):
         return self.form_invalid(form)
 
     def get_success_url(self):
+        self.request.session['start-attendance'] = True
         return reverse_lazy(
             'CourseDetail',
             kwargs={'pk': self.course_id }

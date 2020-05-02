@@ -8,6 +8,14 @@
 {% block content %}
   <div class="content">
     <div class="card">
+      <p>Active periods to give presents: </p>
+      <div class="courses">
+        {% for period in active_periods %}
+          <button  class="course" onclick="location.href = '{{ url('CourseDetail', kwargs={'pk': period.course.id}) }}';">{{ period.course.name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="card">
       <p>My Courses as a Teacher: </p>
       <div class="courses">
         <div class="add-course">

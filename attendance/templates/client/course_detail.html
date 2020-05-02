@@ -119,6 +119,10 @@
       alertify.success('Student added succfully.');
     {% endif %}
 
+    {% if request.session.pop('start-attendance', False) %}
+      alertify.success('Attendance timer started.');
+    {% endif %}
+
   });
 
   $(function() {
