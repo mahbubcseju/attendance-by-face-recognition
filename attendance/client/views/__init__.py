@@ -10,4 +10,4 @@ from .auth import (
     LogOut,
 )
 from .course_detail import CourseDetail, APIStudentInvite
-from .attendance import InitializeAttendance
+from .attendance import InitializeAttendance, ProcessAttendance

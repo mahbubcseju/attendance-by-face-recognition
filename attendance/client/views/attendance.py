@@ -1,8 +1,8 @@
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
 
 from client.forms import InitializeAttendanceForm
-from database.models import Course
+from database.models import Course, AttendancePeriod
 
 
 class InitializeAttendance(FormView):
@@ -28,3 +28,16 @@ class InitializeAttendance(FormView):
             'CourseDetail',
             kwargs={'pk': self.course_id }
         )
+
+
+class ProcessAttendance(TemplateView):
+    template_name = 'client/process_attendance.html'
+
+    def dispatch(self, request, period_id, *args, **kwargs):
+        self._period = AttendancePeriod.objects.get(id=period_id)
+        return super().dispatch(request, period_id, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['period'] = self._period
+        return context

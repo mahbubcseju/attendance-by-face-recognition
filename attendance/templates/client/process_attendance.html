@@ -1,0 +1,15 @@
+{% extends('client/base.html') %}
+
+{% block css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ static('css/client/process_attendance.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <div class="card">
+      <p styel="color: green;">Course Name: {{ period.course.name }}</p>
+      <p styel="color: green;">Remaining time: lol</p>
+    </div>
+  </div>
+{% endblock %}
