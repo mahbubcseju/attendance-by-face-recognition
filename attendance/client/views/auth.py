@@ -49,7 +49,6 @@ class Login(FormView):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            print(user)
 
             if user:
                 login(request, user)
