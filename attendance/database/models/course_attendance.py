@@ -9,6 +9,12 @@ class AttendancePeriod(models.Model):
     period = models.IntegerField('Period', default=45)
     date = models.DateField('Date', default=timezone.now)
 
+    def get_remaining_time(self):
+        remaining_time = self.start_at + timezone.timedelta(minutes=self.period) - timezone.now()
+        seconds = remaining_time.total_seconds()
+        minutes = seconds // 60
+        return minutes
+
 
 class AttendanceEntry(models.Model):
     period = models.ForeignKey(AttendancePeriod, on_delete=models.CASCADE)

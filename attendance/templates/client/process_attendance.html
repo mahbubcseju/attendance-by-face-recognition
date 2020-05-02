@@ -9,7 +9,7 @@
   <div class="content">
     <div class="card">
       <p styel="color: green;">Course Name: {{ period.course.name }}</p>
-      <p styel="color: green;">Remaining time: lol</p>
+      <p styel="color: green;">Remaining time: {{ period.get_remaining_time() }} minutes</p>
     </div>
   </div>
 {% endblock %}

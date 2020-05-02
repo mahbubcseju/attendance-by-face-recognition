@@ -11,7 +11,7 @@
       <p>Active periods to give presents: </p>
       <div class="courses">
         {% for period in active_periods %}
-          <button  class="course" onclick="location.href = '{{ url('ProcessAttendance', kwargs={'period_id': period.course.id}) }}';">{{ period.course.name }}</button>
+          <button  class="course" onclick="location.href = '{{ url('ProcessAttendance', kwargs={'period_id': period.id }) }}';">{{ period.course.name }}</button>
         {% endfor %}
       </div>
     </div>
