@@ -34,7 +34,6 @@ class Home(TemplateView):
         context['supervised_courses'] = Course.objects.filter(supervisor=self.request.user)
         context['student_courses'] = CourseStudent.objects.filter(user=self.request.user)
         context['active_periods'] = my_active_periods
-        print(context['active_periods'])
         return context
 
 

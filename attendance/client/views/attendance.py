@@ -1,10 +1,14 @@
+from django.contrib.auth.decorators import login_required
 from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 
 from client.forms import InitializeAttendanceForm
 from database.models import Course, AttendancePeriod
+from .decorators import face_image_uploaded
 
 
+@method_decorator(login_required, name='dispatch')
 class InitializeAttendance(FormView):
     template_name = 'client/initialize_attendance.html'
     form_class = InitializeAttendanceForm
@@ -30,6 +34,8 @@ class InitializeAttendance(FormView):
         )
 
 
+@method_decorator(login_required, name='dispatch')
+@method_decorator(face_image_uploaded, name='dispatch')
 class ProcessAttendance(TemplateView):
     template_name = 'client/process_attendance.html'
 
