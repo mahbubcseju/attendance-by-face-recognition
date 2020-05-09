@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (
+    AttendancePeriod,
+    AttendanceEntry,
+    Course,
+    CourseStudent,
+    FaceImageBase,
+)
+
+admin.site.register(AttendancePeriod)
+admin.site.register(AttendanceEntry)
+admin.site.register(Course)
+admin.site.register(CourseStudent)
+admin.site.register(FaceImageBase)

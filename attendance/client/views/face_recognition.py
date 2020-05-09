@@ -14,7 +14,6 @@ class RegisterImage(FormView):
 
     def post(self, request, username, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
-        print(form)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.user = request.user
