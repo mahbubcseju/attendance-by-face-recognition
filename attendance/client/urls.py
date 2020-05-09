@@ -15,4 +15,5 @@ urlpatterns = [
     path('api/student/invitation/update/', views.APIInvitationUpdate.as_view(), name='APIStudentInvitationUpdate'),
     path('attendance/initialize/<int:course_id>/', views.InitializeAttendance.as_view(), name='InitializeAttendance'),
     path('attendance/<int:period_id>/start/', views.ProcessAttendance.as_view(), name='ProcessAttendance'),
+    path('register/image/<username>/', views.RegisterImage.as_view(), name='RegisterFaceImage'),
 ]

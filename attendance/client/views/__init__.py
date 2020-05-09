@@ -11,3 +11,4 @@ from .auth import (
 )
 from .course_detail import CourseDetail, APIStudentInvite
 from .attendance import InitializeAttendance, ProcessAttendance
+from .face_recognition import RegisterImage
