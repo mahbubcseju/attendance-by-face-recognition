@@ -24,7 +24,13 @@ class RegisterImage(TemplateView):
             imageData = dataUrlPattern.match(imageData).group(2)
             file = base64.b64decode(imageData)
             image = ContentFile(file, '{}.jpeg'.format(username))
-            FaceImageBase.objects.create(user=request.user, image=image)
+            current_image = FaceImageBase.objects.filter(user=request.user)
+            if current_image:
+                obj = FaceImageBase.objects.filter(user=request.user)
+                obj.image = image
+                obj.save()
+            else:
+                FaceImageBase.objects.filter(user=request.user, image=image)
             obj = {
                 'status': 'OK',
                 'result': reverse('Home'),
