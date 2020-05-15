@@ -50,21 +50,24 @@
     upload = function() {
       var form = new FormData();
       var image = $('#snapShot img')[0].src;
+      var base64ImageContent = image.replace(/^data:image\/(png|jpeg);base64,/, "");
+      var blob = base64ToBlob(base64ImageContent, 'image/jpeg');
+      form.append('image', blob);
       $.ajax({
         url: '{{ url('RegisterFaceImage', kwargs={'username': 'mahbubcseju'}) }}',
-        type: 'POST',
-        data: {
-          csrfmiddlewaretoken: '{{ csrf_token }}',
-          image: image
-        }
-      }).then(
-        function(data) {
-          alertify.success('Image saved successfully');
-          location.href = data.result;
-        }, function(err) {
-          alertify.error(err.responseJSON.result);
-        }
-      );
+          type: 'POST',
+          headers: {'X-CSRFToken': $.cookie('csrftoken')},
+          cache: false,
+          processData: false,
+          contentType: false,
+          data: form
+        }).then(
+          function(data) {
+            alertify.success('Image saved successfully');
+          }, function(err) {
+            alertify.error(err.responseJSON.result);
+          }
+        );
     }
 
     function base64ToBlob(base64, mime)
