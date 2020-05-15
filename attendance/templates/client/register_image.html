@@ -60,7 +60,6 @@
       }).then(
         function(data) {
           alertify.success('Image saved successfully');
-          location.href = data.result;
         }, function(err) {
           alertify.error(err.responseJSON.result);
         }

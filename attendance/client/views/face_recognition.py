@@ -16,7 +16,6 @@ from database.models import FaceImageBase
 @method_decorator(login_required, name='dispatch')
 class RegisterImage(TemplateView):
     template_name = 'client/register_image.html'
-    success_url = reverse_lazy('Home')
 
     def post(self, request, username, *args, **kwargs):
         try:
