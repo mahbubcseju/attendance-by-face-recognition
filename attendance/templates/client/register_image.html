@@ -2,30 +2,95 @@
 
 {% block css %}
   {{ super() }}
-  <link rel="stylesheet" href="{{ static('css/client/login.css') }}">
+  <link rel="stylesheet" href="{{ static('css/client/register_image.css') }}">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
+
 {% endblock %}
 
 {% block content %}
   <div class="content">
-    <div class="card">
-      <form method="post" enctype="multipart/form-data">
-      {% for field in form %}
-        <p>
-          {{ field.errors }}
-          {{ field.label_tag() }}
-          {{ field }}
-          <span class="helptext">{{ field.help_text|safe }}</span>
-        </p>
-      {% endfor %}
-      <button type="submit">Submit</button>
-      <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-      </form>
+
+    <div style="display: flex;">
+      <div class="card" style="display: inline-block;">
+        <div id="camera" >
+        </div>
+        <button onclick="takeSnap()">Take Snap</button>
+      </div>
+      <div class="card" style="display: display: inline-block;;">
+        <div id="snapShot"></div>
+        <button onclick="upload()">Upload</button>
+      </div>
     </div>
   </div>
 {% endblock %}
 
 {% block scripts %}
   {{ super() }}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script>
+
+  $(document).ready(function(){
+    Webcam.set({
+      width: 300,
+      height: 260,
+      image_format: 'jpeg',
+      jpeg_quality: 100
+    });
+
+    $camera_id = document.getElementById('camera');
+    Webcam.attach($camera_id);
+
+    takeSnap = function () {
+      Webcam.snap(function (data_uri) {
+        document.getElementById('snapShot').innerHTML =
+            '<img src="' + data_uri + '" width="260px" height="224px" />';
+      });
+    }
+
+    upload = function() {
+      var form = new FormData();
+      var image = $('#snapShot img')[0].src;
+      $.ajax({
+        url: '{{ url('RegisterFaceImage', kwargs={'username': 'mahbubcseju'}) }}',
+        type: 'POST',
+        data: {
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          image: image
+        }
+      }).then(
+        function(data) {
+          alertify.success('Image saved successfully');
+          location.href = data.result;
+        }, function(err) {
+          alertify.error(err.responseJSON.result);
+        }
+      );
+    }
+
+    function base64ToBlob(base64, mime)
+    {
+      mime = mime || '';
+      var sliceSize = 1024;
+      var byteChars = window.atob(base64);
+      var byteArrays = [];
+
+      for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
+          var slice = byteChars.slice(offset, offset + sliceSize);
+
+          var byteNumbers = new Array(slice.length);
+          for (var i = 0; i < slice.length; i++) {
+              byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          var byteArray = new Uint8Array(byteNumbers);
+
+          byteArrays.push(byteArray);
+      }
+      return new Blob(byteArrays, {type: mime});
+    }
+  });
+
+  </script>
 
 {% endblock %}
 
