@@ -2,7 +2,7 @@ import re
 import base64
 
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import FormView, TemplateView
 from django.utils.decorators import method_decorator
 from django.core.files.base import ContentFile
@@ -14,7 +14,6 @@ from database.models import FaceImageBase
 @method_decorator(login_required, name='dispatch')
 class RegisterImage(FormView):
     template_name = 'client/register_image.html'
-    success_url = reverse_lazy('Home')
     form_class = forms.RegisterImageForm
 
     def post(self, request, username, *args, **kwargs):
@@ -24,3 +23,6 @@ class RegisterImage(FormView):
             FaceImageBase.objects.create(user=request.user, image=image)
             return self.form_valid(form)
         return self.form_invalid(form)
+
+    def get_success_url(self):
+        return reverse('Home')

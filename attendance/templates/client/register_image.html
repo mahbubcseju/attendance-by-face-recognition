@@ -63,6 +63,7 @@
           data: form
         }).then(
           function(data) {
+            console.log(data);
             alertify.success('Image saved successfully');
           }, function(err) {
             alertify.error(err.responseJSON.result);
