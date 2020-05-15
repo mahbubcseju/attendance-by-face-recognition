@@ -8,14 +8,27 @@
 {% block content %}
   <div class="content">
     <div class="card">
+      <div id="image-card">
+        <div id="camera">
+
+        </div>
+        <button id="capture">Send</button>
+      </div>
       <p styel="color: green;">Course Name: {{ period.course.name }}</p>
       <div styel="color: green;" id="remainingTime">Remaining time: {{ period.get_remaining_time() }} minutes</div>
+      {% if period.is_present_given(request.user) %}
+        <div>Present is given once</div>
+      {% else %}
+        <button id="start">Start Attendance</button>
+      {% endif %}
     </div>
   </div>
 {% endblock %}
 
 {% block scripts %}
   {{ super() }}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   <script>
     var deadline = new Date('{{ period.get_final_time() }}').getTime();
     var x = setInterval(function() {
@@ -29,7 +42,26 @@
       if (t < 0) {
         clearInterval(x);
         document.getElementById("remainingTime").innerHTML = "Time expired for attendance";
+        $('#camera').hide();
+        $('#capture').hide();
+        $('#image-card').hide();
+        $('#start').hide();
       }
     }, 1000);
+
+    $(document).ready(function(){
+      $('#start').click(function(){
+        $('#image-card').show();
+        $('#start').hide();
+        Webcam.set({
+          width: 300,
+          height: 260,
+          image_format: 'jpeg',
+          jpeg_quality: 100
+        });
+        $camera_id = document.getElementById('camera');
+        Webcam.attach($camera_id);
+      });
+    });
   </script>
 {% endblock %}

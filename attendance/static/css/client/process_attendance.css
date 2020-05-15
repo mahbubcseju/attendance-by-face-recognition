@@ -21,7 +21,14 @@ input {
 }
 
 button {
-    border-radius: 25px;
+    border-radius: 4px;
     font-size: 1em;
     background-color: green;
+}
+
+#image-card {
+    width: 300px;
+    height: 300px;
+    display: none;
+    margin: auto;
 }

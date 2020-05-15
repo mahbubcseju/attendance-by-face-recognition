@@ -18,6 +18,13 @@ class AttendancePeriod(models.Model):
     def get_final_time(self):
         return self.start_at + timezone.timedelta(minutes=self.period)
 
+    def is_present_given(self, user):
+        entries = self.attendanceentry_set.all()
+        for entry in entries:
+            if entry.course_student.user == user:
+                return True
+        return False
+
 
 class AttendanceEntry(models.Model):
     period = models.ForeignKey(AttendancePeriod, on_delete=models.CASCADE)
